@@ -12,17 +12,17 @@ if [[ $platform == 'Darwin' ]]; then
     echo "Installing homebrew cask";
     brew tap caskroom/cask
     echo "source ~/.bashrc" >> ~/.bash_profile
+    # bashrc
+    ln -sf ${BASEDIR}/bashrc.osx ~/.bashrc
   else
     echo "brew not installed"
     exit
   fi
 elif [[ $platform == 'Linux' ]]; then
   echo "You are on Linux";
+  # bashrc
+  ln -sf ${BASEDIR}/bashrc.linux ~/.bashrc
 fi
-
-# bash
-echo "Setting up bashrc";
-ln -sf ${BASEDIR}/bashrc ~/.bashrc
 
 # vim
 echo "Setting up vimrc";
