@@ -44,4 +44,8 @@ ln -s ${BASEDIR}/gitconfig ~/.gitconfig
 echo "Setting up gitignore";
 ln -s ${BASEDIR}/gitignore ~/.gitignore
 
+# git-completion
+echo "Downloading git-completion.bash";
+curl -o ~/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+
 /bin/bash --login
