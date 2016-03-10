@@ -22,11 +22,11 @@ fi
 
 # bash
 echo "Setting up bashrc";
-ln -s ${BASEDIR}/bashrc ~/.bashrc
+ln -sf ${BASEDIR}/bashrc ~/.bashrc
 
 # vim
 echo "Setting up vimrc";
-ln -s ${BASEDIR}/vimrc ~/.vimrc
+ln -sf ${BASEDIR}/vimrc ~/.vimrc
 
 # install vundle
 echo "Installing Vundle";
@@ -38,14 +38,19 @@ vim +PluginInstall +qall
 
 # gitconfig
 echo "Setting up gitconfig";
-ln -s ${BASEDIR}/gitconfig ~/.gitconfig
+ln -sf ${BASEDIR}/gitconfig ~/.gitconfig
 
 # gitignore
 echo "Setting up gitignore";
-ln -s ${BASEDIR}/gitignore ~/.gitignore
+ln -sf ${BASEDIR}/gitignore ~/.gitignore
 
 # git-completion
 echo "Downloading git-completion.bash";
-curl -o ~/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+if [ ! -f ~/git-completion.bash ]; then
+  curl -o ~/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+else
+  echo "git-completion.bash exists";
+fi
+
 
 /bin/bash --login
