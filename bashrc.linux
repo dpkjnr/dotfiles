@@ -7,7 +7,10 @@ alias ll='ls -la'
 # Show hidden files
 alias l.='ls -d .* --color=auto'
 
-# Shell prompt
-export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+# Old PS1
+#export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+
+# PS1 with git branch
+export PS1='\[\033[33;1m\]\w\[\033[m\]$(__git_ps1 " (%s)")\[\e[0;39m\]\$ '
 
 source ~/git-completion.bash

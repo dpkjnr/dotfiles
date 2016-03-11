@@ -1,15 +1,17 @@
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
 [user]
-	name = Sunny
-	email = me@darkowlzz.space
+  name = Sunny
+  email = me@darkowlzz.space
 [core]
   editor = vim
-	excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
 [alias]
   ci = commit
   co = checkout
   st = status
   lg = log --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %C(white)- %an, %ar%Creset'
+[color]
+  ui = true
+[filter "lfs"]
+  required = true
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
