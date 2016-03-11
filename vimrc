@@ -16,8 +16,13 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 syntax enable
+
+" Show line numbers
 set number
+
+" Show relative line numbers
 set rnu
+
 set autoindent
 set shiftwidth=2
 set softtabstop=2
@@ -27,17 +32,32 @@ set smartindent
 set expandtab
 set cursorline
 set showmatch
+
+" Show current position with a horizontal line
 set ruler
-set backspace=2 " make backspace work like most other apps
-set modeline
+
+" Make backspace work like most other apps
+set backspace=2
+
+" Show status line even when only one window is shown
 set ls=2
 
-let g:NERDTreeShowHidden=1 " NERDTree show hidden files
+" Turn on wildmenu. Wildmenu shows the available commands in statusbar
+" on tab for autocompletion
+set wildmenu
 
-" highlight text with red background when > 80 characters in a line
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc,
+
+" Show hidden dot files in NERDTree
+let g:NERDTreeShowHidden=1
+
+" Highlight text with red background when > 80 characters in a line
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 
-nnoremap <Leader>n :set rnu
-nnoremap <Leader>p :PluginInstall
-nnoremap <Leader>t :NERDTreeToggle
+nnoremap <leader>n :set rnu
+nnoremap <leader>p :PluginInstall
+nnoremap <leader>t :NERDTreeToggle
+nnoremap <leader>e :Explore
+nnoremap <leader>w :w!
