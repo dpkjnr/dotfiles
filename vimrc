@@ -24,14 +24,39 @@ set number
 set rnu
 
 set autoindent
-set shiftwidth=2
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+
 set softtabstop=2
-set tabstop=2
+
+" Auto indent
 set autoindent
-set smartindent
+
+" Use spaces instead of tabs
 set expandtab
+
+" Be smart when using tabs
+set smartindent
+
 set cursorline
 set showmatch
+
+" Wrap lines
+set wrap
+
+" Ignore case when searching
+set ignorecase
+
+" When searching try to be smart about cases
+set smartcase
+
+" Highlight search results
+set hlsearch
+
+" Search as you type
+set incsearch
 
 " Show current position with a horizontal line
 set ruler
@@ -41,6 +66,10 @@ set backspace=2
 
 " Show status line even when only one window is shown
 set ls=2
+
+" Treat long lines as break lines (useful when moving around in them)
+map j gj
+map k gk
 
 " Turn on wildmenu. Wildmenu shows the available commands in statusbar
 " on tab for autocompletion
