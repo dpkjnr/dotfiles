@@ -81,12 +81,24 @@ set wildignore=*.o,*~,*.pyc,
 " Show hidden dot files in NERDTree
 let g:NERDTreeShowHidden=1
 
+" Toggling list style in Explore
+let g:netrw_liststyle=3
+
 " Highlight text with red background when > 80 characters in a line
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 
-nnoremap <leader>n :set rnu
-nnoremap <leader>p :PluginInstall
-nnoremap <leader>t :NERDTreeToggle
-nnoremap <leader>e :Explore
-nnoremap <leader>w :w!
+" Set relative number lines
+nnoremap <leader>n :set rnu<cr>
+
+" Install Vundle plugins
+nnoremap <leader>p :PluginInstall<cr>
+
+" Start NERDTreeToggle
+nnoremap <leader>t :NERDTreeToggle<cr>
+
+" Open Explore
+nnoremap <leader>e :Explore<cr>
+
+" Quick save
+nnoremap <leader>w :w!<cr>

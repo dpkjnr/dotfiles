@@ -52,5 +52,12 @@ else
   echo "git-completion.bash exists";
 fi
 
+# git-prompt
+echo "Downloading git-prompt.sh";
+if [ ! -f ~/.git-prompt.sh ]; then
+  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
+else
+  echo ".git-prompt.sh exists";
+fi
 
 /bin/bash --login

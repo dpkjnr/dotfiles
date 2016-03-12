@@ -7,10 +7,14 @@ alias ll='ls -la'
 # Show hidden files
 alias l.='ls -d .* --color=auto'
 
-# Old PS1
-#export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
-
 # PS1 with git branch
-export PS1='\[\033[33;1m\]\w\[\033[m\]$(__git_ps1 " (%s)")\[\e[0;39m\]\$ '
+PS1='\[\e[0;32m\]\u\[\e[0m\]\[\e[0m\]:\[\e[0;34m\]\W\[\e[0;32m\]$(__git_ps1 " (%s)")\[\e[0;39m\]\$ '
 
+# Load git-completion
 source ~/git-completion.bash
+
+# Load git-prompt
+source ~/.git-prompt.sh
+
+# Indicate staged and non-staged changes
+GIT_PS1_SHOWDIRTYSTATE=1
