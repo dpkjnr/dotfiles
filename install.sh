@@ -7,8 +7,10 @@ platform=$(uname);
 if [[ $platform == 'Darwin' ]]; then
   if hash brew 2> /dev/null; then
     echo "brew found";
-    echo "Installing vim, git";
-    brew install vim git
+    echo "Updating brew formula list";
+    brew update
+    echo "Installing vim, git, byobu";
+    brew install vim git byobu
     echo "Installing homebrew cask";
     brew tap caskroom/cask
     echo "source ~/.bashrc" >> ~/.bash_profile
@@ -20,6 +22,11 @@ if [[ $platform == 'Darwin' ]]; then
   fi
 elif [[ $platform == 'Linux' ]]; then
   echo "You are on Linux";
+  # For ubuntu only
+  echo "Updating package list";
+  sudo apt-get update
+  echo "Installing vim, git, byobu";
+  sudo apt-get install vim git byobu
   # bashrc
   ln -sf ${BASEDIR}/bashrc.linux ~/.bashrc
 fi
