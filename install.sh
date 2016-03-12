@@ -9,8 +9,8 @@ if [[ $platform == 'Darwin' ]]; then
     echo "brew found";
     echo "Updating brew formula list";
     brew update
-    echo "Installing vim, git, byobu";
-    brew install vim git byobu
+    echo "Installing vim, git, byobu, ack";
+    brew install vim git byobu ack
     echo "Installing homebrew cask";
     brew tap caskroom/cask
     echo "source ~/.bashrc" >> ~/.bash_profile
@@ -25,8 +25,10 @@ elif [[ $platform == 'Linux' ]]; then
   # For ubuntu only
   echo "Updating package list";
   sudo apt-get update
-  echo "Installing vim, git, byobu";
-  sudo apt-get install vim git byobu
+  echo "Installing vim, git, byobu, ack-grep";
+  sudo apt-get install vim git byobu ack-grep
+  # Rename ack-grep to ack
+  sudo dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep
   # bashrc
   ln -sf ${BASEDIR}/bashrc.linux ~/.bashrc
 fi
