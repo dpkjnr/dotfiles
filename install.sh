@@ -61,9 +61,6 @@ fi
 # bashrc
 ln -sf ${BASEDIR}/bashrc ~/.bashrc
 
-# profile
-ln -sf ${BASEDIR}/profile ~/.profile
-
 # vimrc
 echo "Setting up vimrc";
 ln -sf ${BASEDIR}/vimrc ~/.vimrc
