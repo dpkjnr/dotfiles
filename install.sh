@@ -31,6 +31,7 @@ if [[ $platform == 'Darwin' ]]; then
     source_bashrc="source ~/.bashrc";
     # Search for bashrc source line
     if ! grep -F "$source_bashrc" ~/.bash_profile; then
+      # Make bash_profile source bashrc
       echo $source_bashrc >> ~/.bash_profile
     fi
 

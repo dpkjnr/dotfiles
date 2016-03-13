@@ -1,7 +1,6 @@
 platform=$(uname);
 
 if [[ $platform == 'Darwin' ]]; then
-  echo "Setting bashrc for darwin";
   # Use a long listing format
   alias ll='ls -la'
 
@@ -9,7 +8,6 @@ if [[ $platform == 'Darwin' ]]; then
   alias l.='ls -d .* --color=auto'
 
 elif [[ $platform == 'Linux' ]]; then
-  echo "Setting bashrc for linux";
   # Colorize the ls output
   alias ls='ls --color=auto'
 
@@ -32,3 +30,12 @@ source ~/.git-prompt.sh
 
 # Indicate staged and non-staged changes
 GIT_PS1_SHOWDIRTYSTATE=1
+
+# Check Internet connection
+alias pingg="ping -s 0 8.8.8.8"
+
+# Show size of file or dir
+alias sizeof="du -h"
+
+# Show system storage info
+alias space="df -h"
