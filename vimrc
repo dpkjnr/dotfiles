@@ -25,9 +25,9 @@ set rnu
 
 set autoindent
 
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+" 1 tab == 2 spaces
+set shiftwidth=2
+set tabstop=2
 
 set softtabstop=2
 
@@ -102,3 +102,6 @@ nnoremap <leader>e :Explore<cr>
 
 " Quick save
 nnoremap <leader>w :w!<cr>
+
+" Cabbrev for :tabnew
+ca tn tabnew

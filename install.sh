@@ -13,9 +13,14 @@ if [[ $platform == 'Darwin' ]]; then
     brew install vim git byobu ack
     echo "Installing homebrew cask";
     brew tap caskroom/cask
-    echo "source ~/.bashrc" >> ~/.bash_profile
-    # bashrc
-    ln -sf ${BASEDIR}/bashrc.osx ~/.bashrc
+
+    # Source bashrc string
+    source_bashrc="source ~/.bashrc";
+    # Search for bashrc source line
+    if ! grep -F "$source_bashrc" ~/.bash_profile; then
+      echo $source_bashrc >> ~/.bash_profile
+    fi
+
   else
     echo "brew not installed"
     exit
@@ -29,9 +34,10 @@ elif [[ $platform == 'Linux' ]]; then
   sudo apt-get install vim git byobu ack-grep
   # Rename ack-grep to ack
   sudo dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep
-  # bashrc
-  ln -sf ${BASEDIR}/bashrc.linux ~/.bashrc
 fi
+
+# bashrc
+ln -sf ${BASEDIR}/bashrc ~/.bashrc
 
 # vim
 echo "Setting up vimrc";
