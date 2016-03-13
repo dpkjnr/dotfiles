@@ -40,8 +40,9 @@ alias sizeof="du -h"
 # Show system storage info
 alias space="df -h"
 
+nvmdir="/.nvm"
+export NVM_DIR="$HOME$nvmdir"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
 # Source nvm bash completion
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
-
-export NVM_DIR="~/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
