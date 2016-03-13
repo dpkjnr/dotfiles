@@ -61,7 +61,7 @@ fi
 # bashrc
 ln -sf ${BASEDIR}/bashrc ~/.bashrc
 
-# vim
+# vimrc
 echo "Setting up vimrc";
 ln -sf ${BASEDIR}/vimrc ~/.vimrc
 
@@ -96,5 +96,10 @@ if [ ! -f ~/.git-prompt.sh ]; then
 else
   echo ".git-prompt.sh exists";
 fi
+
+# nvm
+echo "Installing nvm";
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
+
 
 /bin/bash --login
