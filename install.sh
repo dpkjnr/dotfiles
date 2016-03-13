@@ -61,6 +61,9 @@ fi
 # bashrc
 ln -sf ${BASEDIR}/bashrc ~/.bashrc
 
+# profile
+ln -sf ${BASEDIR}/profile ~/.profile
+
 # vimrc
 echo "Setting up vimrc";
 ln -sf ${BASEDIR}/vimrc ~/.vimrc
@@ -100,6 +103,10 @@ fi
 # nvm
 echo "Installing nvm";
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
+
+# rvm
+echo "Installing rvm";
+curl -L https://get.rvm.io | bash -s stable --ruby
 
 
 /bin/bash --login
