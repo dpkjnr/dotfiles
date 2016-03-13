@@ -4,15 +4,28 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 platform=$(uname);
 
+function installcask() {
+  brew cask install "${@}" 2> /dev/null
+}
+
 if [[ $platform == 'Darwin' ]]; then
   if hash brew 2> /dev/null; then
     echo "brew found";
     echo "Updating brew formula list";
     brew update
-    echo "Installing vim, git, byobu, ack";
-    brew install vim git byobu ack
+
+    echo "Installing commandline tools";
+    brew install vim \
+                 git \
+                 byobu \
+                 ack \
+                 tree \
+                 wget
+
     echo "Installing homebrew cask";
     brew tap caskroom/cask
+
+    installcask iterm2
 
     # Source bashrc string
     source_bashrc="source ~/.bashrc";
@@ -25,13 +38,21 @@ if [[ $platform == 'Darwin' ]]; then
     echo "brew not installed"
     exit
   fi
+
 elif [[ $platform == 'Linux' ]]; then
   echo "You are on Linux";
   # For ubuntu only
   echo "Updating package list";
   sudo apt-get update
-  echo "Installing vim, git, byobu, ack-grep";
-  sudo apt-get install vim git byobu ack-grep
+
+  echo "Installing commandline tools";
+  sudo apt-get install vim \
+                       git \
+                       byobu \
+                       ack-grep \
+                       tree \
+                       wget
+
   # Rename ack-grep to ack
   sudo dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep
 fi
