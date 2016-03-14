@@ -51,7 +51,7 @@ export NVM_DIR="$HOME/.nvm"
 # Source nvm bash completion
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
-nvm alias default 5
+nvm alias default 5 &> /dev/null
 
 # rvm setup
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
@@ -60,4 +60,4 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
 
-rvm use 2 --default
+rvm use 2 --default &> /dev/null
