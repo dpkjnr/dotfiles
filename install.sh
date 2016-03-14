@@ -20,7 +20,8 @@ if [[ $platform == 'Darwin' ]]; then
                  byobu \
                  ack \
                  tree \
-                 wget
+                 wget \
+                 multitail
 
     echo "Installing homebrew cask";
     brew tap caskroom/cask
@@ -52,7 +53,8 @@ elif [[ $platform == 'Linux' ]]; then
                        byobu \
                        ack-grep \
                        tree \
-                       wget
+                       wget \
+                       multitail
 
   # Rename ack-grep to ack
   sudo dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep
