@@ -103,11 +103,19 @@ fi
 
 # nvm
 echo "Installing nvm";
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
+if [ ! -d ~/.nvm ]; then
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
+else
+  echo "nvm is already installed";
+fi
 
 # rvm
 echo "Installing rvm";
-curl -L https://get.rvm.io | bash -s stable --ruby
+if ! hash rvm 2> /dev/null; then
+  curl -L https://get.rvm.io | bash -s stable --ruby
+else
+  echo "rvm is already installed";
+fi
 
 
 /bin/bash --login
