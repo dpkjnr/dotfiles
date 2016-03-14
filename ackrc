@@ -1,0 +1,4 @@
+--color
+--color-match=yellow
+--color-filename=red
+--color-lineno=magenta

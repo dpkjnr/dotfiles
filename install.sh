@@ -65,6 +65,10 @@ ln -sf ${BASEDIR}/bashrc ~/.bashrc
 echo "Setting up vimrc";
 ln -sf ${BASEDIR}/vimrc ~/.vimrc
 
+# ackrc
+echo "Setting up ackrc";
+ln -sf ${BASEDIR}/ackrc ~/.ackrc
+
 # install vundle
 echo "Installing Vundle";
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
