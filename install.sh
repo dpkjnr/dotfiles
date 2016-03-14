@@ -1,8 +1,22 @@
 #!/bin/bash
 
+# Default config
+NOLOGIN=false
+NOUPDATE=false
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
 platform=$(uname);
+
+# Parse the commandline args and set config
+while test $# -gt 0
+do
+  case "$1" in
+    --no-login) NOLOGIN=true
+      ;;
+    --no-update) NOUPDATE=true
+      ;;
+  esac
+  shift
+done
 
 function installcask() {
   brew cask install "${@}" 2> /dev/null
@@ -11,8 +25,11 @@ function installcask() {
 if [[ $platform == 'Darwin' ]]; then
   if hash brew 2> /dev/null; then
     echo "brew found";
-    echo "Updating brew formula list";
-    brew update
+
+    if ! $NOUPDATE; then
+      echo "Updating brew formula list";
+      brew update
+    fi
 
     echo "Installing commandline tools";
     brew install vim \
@@ -44,8 +61,10 @@ if [[ $platform == 'Darwin' ]]; then
 elif [[ $platform == 'Linux' ]]; then
   echo "You are on Linux";
   # For ubuntu only
-  echo "Updating package list";
-  sudo apt-get update
+  if ! $NOUPDATE; then
+    echo "Updating package list";
+    sudo apt-get update
+  fi
 
   echo "Installing commandline tools";
   sudo apt-get install vim \
@@ -119,5 +138,9 @@ else
   echo "rvm is already installed";
 fi
 
-
-/bin/bash --login
+# No login option
+if $NOLOGIN; then
+  echo "Not logging into a new shell";
+else
+  /bin/bash --login
+fi
