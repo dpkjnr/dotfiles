@@ -11,6 +11,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'othree/html5.vim'
+Plugin 'vim-ruby/vim-ruby'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -102,6 +103,9 @@ nnoremap <leader>e :Explore<cr>
 
 " Quick save
 nnoremap <leader>w :w!<cr>
+
+" Turn off highlight until the next search
+nnoremap <leader>h :noh<cr>
 
 " Cabbrev for :tabnew
 ca tn tabnew
