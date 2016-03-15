@@ -20,7 +20,7 @@ fi
 
 
 # PS1 with git branch
-PS1='\[\e[0;32m\]\u\[\e[0m\]\[\e[0m\]:\[\e[0;34m\]\W\[\e[0;32m\]$(__git_ps1 " (%s)")\[\e[0;39m\]\$ '
+PS1='\[\e[0;32m\]\u\[\e[0m\]\[\e[0m\]:\[\e[1;34m\]\W\[\e[0;32m\]$(__git_ps1 " (%s)")\[\e[0;39m\]\$ '
 
 # Load git-completion
 source ~/git-completion.bash
