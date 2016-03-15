@@ -107,5 +107,8 @@ nnoremap <leader>w :w!<cr>
 " Turn off highlight until the next search
 nnoremap <leader>h :noh<cr>
 
+" Toggle paste
+nnoremap <leader>tp :set invpaste paste?<cr>
+
 " Cabbrev for :tabnew
 ca tn tabnew
