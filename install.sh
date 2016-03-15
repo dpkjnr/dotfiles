@@ -3,6 +3,8 @@
 # Default config
 NOLOGIN=false
 NOUPDATE=false
+NOMGR=false
+NOVUNDLE=false
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 platform=$(uname);
 
@@ -10,10 +12,13 @@ platform=$(uname);
 while test $# -gt 0
 do
   case "$1" in
-    --no-login) NOLOGIN=true
+    --no-login) NOLOGIN=true # No relogin after the script is run
       ;;
-    --no-update) NOUPDATE=true
+    --no-update) NOUPDATE=true # Do not update package manager list
       ;;
+    --no-managers) NOMGR=true # Do not install language managers like nvm, rvm
+      ;;
+    --no-vundle) NOVUNDLE=true # Do not install Vundle and its plugins
   esac
   shift
 done
@@ -90,17 +95,15 @@ ln -sf ${BASEDIR}/vimrc ~/.vimrc
 echo "Setting up ackrc";
 ln -sf ${BASEDIR}/ackrc ~/.ackrc
 
-# irbrc
-echo "Setting up irbrc";
-ln -sf ${BASEDIR}/irbrc ~/.irbrc
-
 # install vundle
-echo "Installing Vundle";
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+if ! $NOVUNDLE; then
+  echo "Installing Vundle";
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-# install vim plugins
-echo "Installing vim plugins";
-vim +PluginInstall +qall
+  # install vim plugins
+  echo "Installing vim plugins";
+  vim +PluginInstall +qall
+fi
 
 # gitconfig
 echo "Setting up gitconfig";
@@ -127,19 +130,26 @@ else
 fi
 
 # nvm
-echo "Installing nvm";
-if [ ! -d ~/.nvm ]; then
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
-else
-  echo "nvm is already installed";
+if ! $NOMGR; then
+  echo "Installing nvm";
+  if [ ! -d ~/.nvm ]; then
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
+  else
+    echo "nvm is already installed";
+  fi
 fi
 
 # rvm
-echo "Installing rvm";
-if ! hash rvm 2> /dev/null; then
-  curl -L https://get.rvm.io | bash -s stable --ruby
-else
-  echo "rvm is already installed";
+if ! $NOMGR; then
+  echo "Installing rvm";
+  if ! hash rvm 2> /dev/null; then
+    curl -L https://get.rvm.io | bash -s stable --ruby
+  else
+    echo "rvm is already installed";
+  fi
+  # irbrc
+  echo "Setting up irbrc";
+  ln -sf ${BASEDIR}/irbrc ~/.irbrc
 fi
 
 # No login option
