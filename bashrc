@@ -7,6 +7,9 @@ if [[ $platform == 'Darwin' ]]; then
   # Show hidden files
   alias l.='ls -d .* --color=auto'
 
+  export CLICOLOR=1
+  export LSCOLORS=ExFxBxDxCxegedabagacad
+
 elif [[ $platform == 'Linux' ]]; then
   # Colorize the ls output
   alias ls='ls --color=auto'
