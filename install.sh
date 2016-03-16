@@ -5,6 +5,9 @@ NOLOGIN=false
 NOUPDATE=false
 NOMGR=false
 NOVUNDLE=false
+NOGITCONFIG=false
+NOGITIGNORE=false
+NOCMDLINETOOLS=false
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 platform=$(uname);
 
@@ -19,6 +22,13 @@ do
     --no-managers) NOMGR=true # Do not install language managers like nvm, rvm
       ;;
     --no-vundle) NOVUNDLE=true # Do not install Vundle and its plugins
+      ;;
+    --no-gitconfig) NOGITCONFIG=true # Do not touch gitconfig
+      ;;
+    --no-gitignore) NOGITIGNORE=true # Do not touch gitignore
+      ;;
+    --no-clt) NOCMDLINETOOLS=true # Do not install command line tools
+      ;;
   esac
   shift
 done
@@ -36,19 +46,21 @@ if [[ $platform == 'Darwin' ]]; then
       brew update
     fi
 
-    echo "Installing commandline tools";
-    brew install vim \
-                 git \
-                 byobu \
-                 ack \
-                 tree \
-                 wget \
-                 multitail
+    if ! $NOCMDLINETOOLS; then
+      echo "Installing commandline tools";
+      brew install vim \
+                   git \
+                   byobu \
+                   ack \
+                   tree \
+                   wget \
+                   multitail
 
-    echo "Installing homebrew cask";
-    brew tap caskroom/cask
+      echo "Installing homebrew cask";
+      brew tap caskroom/cask
 
-    installcask iterm2
+      installcask iterm2
+    fi
 
     # Source bashrc string
     source_bashrc="source ~/.bashrc";
@@ -71,17 +83,19 @@ elif [[ $platform == 'Linux' ]]; then
     sudo apt-get update
   fi
 
-  echo "Installing commandline tools";
-  sudo apt-get install vim \
-                       git \
-                       byobu \
-                       ack-grep \
-                       tree \
-                       wget \
-                       multitail
+  if ! $NOCMDLINETOOLS; then
+    echo "Installing commandline tools";
+    sudo apt-get install vim \
+                         git \
+                         byobu \
+                         ack-grep \
+                         tree \
+                         wget \
+                         multitail
 
-  # Rename ack-grep to ack
-  sudo dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep
+    # Rename ack-grep to ack
+    sudo dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep
+  fi
 fi
 
 # bashrc
@@ -106,12 +120,16 @@ if ! $NOVUNDLE; then
 fi
 
 # gitconfig
-echo "Setting up gitconfig";
-ln -sf ${BASEDIR}/gitconfig ~/.gitconfig
+if ! $NOGITCONFIG; then
+  echo "Setting up gitconfig";
+  ln -sf ${BASEDIR}/gitconfig ~/.gitconfig
+fi
 
 # gitignore
-echo "Setting up gitignore";
-ln -sf ${BASEDIR}/gitignore ~/.gitignore
+if ! $NOGITIGNORE; then
+  echo "Setting up gitignore";
+  ln -sf ${BASEDIR}/gitignore ~/.gitignore
+fi
 
 # git-completion
 echo "Downloading git-completion.bash";
