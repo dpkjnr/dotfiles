@@ -41,6 +41,8 @@ if [[ $platform == 'Darwin' ]]; then
   if hash brew 2> /dev/null; then
     echo "brew found";
 
+    brew tap homebrew/completions
+
     if ! $NOUPDATE; then
       echo "Updating brew formula list";
       brew update
@@ -54,7 +56,8 @@ if [[ $platform == 'Darwin' ]]; then
                    ack \
                    tree \
                    wget \
-                   multitail
+                   multitail \
+                   vagrant-completion
 
       echo "Installing homebrew cask";
       brew tap caskroom/cask
@@ -91,7 +94,8 @@ elif [[ $platform == 'Linux' ]]; then
                          ack-grep \
                          tree \
                          wget \
-                         multitail
+                         multitail \
+                         vagrant-bash-completion
 
     # Rename ack-grep to ack
     sudo dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep
