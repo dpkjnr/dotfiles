@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Default config
-NOLOGIN=false
-NOUPDATE=false
-NOMGR=false
-NOVUNDLE=false
-NOGITCONFIG=false
-NOGITIGNORE=false
-NOCMDLINETOOLS=false
+LOGIN=false
+UPDATE=false
+MANAGER=false
+VUNDLE=false
+GITCONFIG=false
+GITIGNORE=false
+CMDLINETOOLS=false
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 platform=$(uname);
 
@@ -15,19 +15,19 @@ platform=$(uname);
 while test $# -gt 0
 do
   case "$1" in
-    --no-login) NOLOGIN=true # No relogin after the script is run
+    --login) LOGIN=true # Relogin after the script is run
       ;;
-    --no-update) NOUPDATE=true # Do not update package manager list
+    --update) UPDATE=true # Update package manager list
       ;;
-    --no-managers) NOMGR=true # Do not install language managers like nvm, rvm
+    --managers) MANAGER=true # Install language managers like nvm, rvm
       ;;
-    --no-vundle) NOVUNDLE=true # Do not install Vundle and its plugins
+    --vundle) VUNDLE=true # Install Vundle and its plugins
       ;;
-    --no-gitconfig) NOGITCONFIG=true # Do not touch gitconfig
+    --gitconfig) GITCONFIG=true # Add gitconfig
       ;;
-    --no-gitignore) NOGITIGNORE=true # Do not touch gitignore
+    --gitignore) GITIGNORE=true # Add gitignore
       ;;
-    --no-clt) NOCMDLINETOOLS=true # Do not install command line tools
+    --clt) CMDLINETOOLS=true # Install command line tools
       ;;
   esac
   shift
@@ -43,12 +43,12 @@ if [[ $platform == 'Darwin' ]]; then
 
     brew tap homebrew/completions
 
-    if ! $NOUPDATE; then
+    if $UPDATE; then
       echo "Updating brew formula list";
       brew update
     fi
 
-    if ! $NOCMDLINETOOLS; then
+    if $CMDLINETOOLS; then
       echo "Installing commandline tools";
       brew install vim \
                    git \
@@ -81,12 +81,12 @@ if [[ $platform == 'Darwin' ]]; then
 elif [[ $platform == 'Linux' ]]; then
   echo "You are on Linux";
   # For ubuntu only
-  if ! $NOUPDATE; then
+  if $UPDATE; then
     echo "Updating package list";
     sudo apt-get update
   fi
 
-  if ! $NOCMDLINETOOLS; then
+  if $CMDLINETOOLS; then
     echo "Installing commandline tools";
     sudo apt-get install vim \
                          git \
@@ -114,7 +114,7 @@ echo "Setting up ackrc";
 ln -sf ${BASEDIR}/ackrc ~/.ackrc
 
 # install vundle
-if ! $NOVUNDLE; then
+if $VUNDLE; then
   echo "Installing Vundle";
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
@@ -124,13 +124,13 @@ if ! $NOVUNDLE; then
 fi
 
 # gitconfig
-if ! $NOGITCONFIG; then
+if $GITCONFIG; then
   echo "Setting up gitconfig";
   ln -sf ${BASEDIR}/gitconfig ~/.gitconfig
 fi
 
 # gitignore
-if ! $NOGITIGNORE; then
+if $GITIGNORE; then
   echo "Setting up gitignore";
   ln -sf ${BASEDIR}/gitignore ~/.gitignore
 fi
@@ -152,7 +152,7 @@ else
 fi
 
 # nvm
-if ! $NOMGR; then
+if $MANAGER; then
   echo "Installing nvm";
   if [ ! -d ~/.nvm ]; then
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
@@ -162,7 +162,7 @@ if ! $NOMGR; then
 fi
 
 # rvm
-if ! $NOMGR; then
+if $MANAGER; then
   echo "Installing rvm";
   if ! hash rvm 2> /dev/null; then
     curl -L https://get.rvm.io | bash -s stable --ruby
@@ -175,8 +175,8 @@ if ! $NOMGR; then
 fi
 
 # No login option
-if $NOLOGIN; then
-  echo "Not logging into a new shell";
-else
+if $LOGIN; then
   /bin/bash --login
+else
+  echo "Not logging into a new shell";
 fi
