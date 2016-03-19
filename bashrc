@@ -43,6 +43,9 @@ alias sizeof="du -h"
 # Show system storage info
 alias space="df -h"
 
+# Show what's running on a given port
+alias onport="lsof -i"
+
 # tmux(Screen) aliases
 alias mv+="tmux swap-window -t +1" # move window to right
 alias mv-="tmux swap-window -t -1" # move window to left
