@@ -38,7 +38,7 @@ GIT_PS1_SHOWDIRTYSTATE=1
 alias pingg="ping -s 0 8.8.8.8"
 
 # Show size of file or dir
-alias sizeof="du -h"
+alias sizeof="du -sh"
 
 # Show system storage info
 alias space="df -h"
