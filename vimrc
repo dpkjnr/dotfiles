@@ -12,6 +12,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'othree/html5.vim'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'hashivim/vim-vagrant'
+Plugin 'puppetlabs/puppet-syntax-vim'
+Plugin 'ekalinin/Dockerfile.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required

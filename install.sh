@@ -8,6 +8,7 @@ VUNDLE=false
 GITCONFIG=false
 GITIGNORE=false
 CMDLINETOOLS=false
+DND=false
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 platform=$(uname);
 
@@ -28,6 +29,8 @@ do
     --gitignore) GITIGNORE=true # Add gitignore
       ;;
     --clt) CMDLINETOOLS=true # Install command line tools
+      ;;
+    --dnd) DND=true # Do not replace the existing bashrc
       ;;
   esac
   shift
@@ -103,7 +106,16 @@ elif [[ $platform == 'Linux' ]]; then
 fi
 
 # bashrc
-ln -sf ${BASEDIR}/bashrc ~/.bashrc
+if $DND; then
+  # Not modifying the existing bashrc
+  ln -sf ${BASEDIR}/bashrc ~/.bashrc2
+  source_dnd="source ~/.bashrc2";
+  if ! grep -F "$source_dnd" ~/.bashrc; then
+    echo $source_dnd >> ~/.bashrc
+  fi
+else
+  ln -sf ${BASEDIR}/bashrc ~/.bashrc
+fi
 
 # vimrc
 echo "Setting up vimrc";
