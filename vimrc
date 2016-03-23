@@ -91,11 +91,14 @@ let g:NERDTreeShowHidden=1
 let g:netrw_liststyle=3
 
 " Highlight text with red background when > 80 characters in a line
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+" match OverLength /\%81v.\+/
 
 " Set color mode for color-limited terminals, like when on a ssh session
 :set t_Co=256
+
+" Highlight 81 and onward characters with a vertical line in the file
+let &colorcolumn=join(range(81,999),",")
 
 " Set color scheme
 :colorscheme lanox
