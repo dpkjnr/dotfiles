@@ -94,6 +94,9 @@ let g:netrw_liststyle=3
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 
+" Set color mode for color-limited terminals, like when on a ssh session
+:set t_Co=256
+
 " Set color scheme
 :colorscheme lanox
 
