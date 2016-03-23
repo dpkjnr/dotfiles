@@ -127,5 +127,11 @@ nnoremap <leader>tp :set invpaste paste?<cr>
 " Reload vimrc
 nnoremap <leader>r :source ~/.vimrc<cr>
 
+" Move tab 1 position to right
+nnoremap <leader>m= :tabmove +1<cr>
+
+" Move tab 1 position to left
+nnoremap <leader>m- :tabmove -1<cr>
+
 " Cabbrev for :tabnew
 ca tn tabnew
