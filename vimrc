@@ -16,6 +16,7 @@ Plugin 'hashivim/vim-vagrant'
 Plugin 'puppetlabs/puppet-syntax-vim'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'gabrielelana/vim-markdown'
+Plugin 'lanox/lanox-vim-theme'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -92,6 +93,9 @@ let g:netrw_liststyle=3
 " Highlight text with red background when > 80 characters in a line
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
+
+" Set color scheme
+:colorscheme lanox
 
 " Set relative number lines
 nnoremap <leader>n :set rnu<cr>
