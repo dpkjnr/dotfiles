@@ -97,11 +97,13 @@ elif [[ $platform == 'Linux' ]]; then
                          ack-grep \
                          tree \
                          wget \
-                         multitail \
-                         vagrant-bash-completion
+                         multitail
 
     # Rename ack-grep to ack
     sudo dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep
+
+    # Vagrant-completion
+    sudo wget https://raw.github.com/kura/vagrant-bash-completion/master/etc/bash_completion.d/vagrant -O /etc/bash_completion.d/vagrant
   fi
 fi
 

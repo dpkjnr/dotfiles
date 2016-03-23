@@ -10,6 +10,11 @@ if [[ $platform == 'Darwin' ]]; then
   export CLICOLOR=1
   export LSCOLORS=ExFxBxDxCxegedabagacad
 
+  # vagrant-completion
+  if [ -f `brew --prefix`/etc/bash_completion.d/vagrant ]; then
+    source `brew --prefix`/etc/bash_completion.d/vagrant
+  fi
+
 elif [[ $platform == 'Linux' ]]; then
   # Colorize the ls output
   alias ls='ls --color=auto'
@@ -67,8 +72,3 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
 
 rvm use 2 --default &> /dev/null
-
-# vagrant-completion
-if [ -f `brew --prefix`/etc/bash_completion.d/vagrant ]; then
-  source `brew --prefix`/etc/bash_completion.d/vagrant
-fi
