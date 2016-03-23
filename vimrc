@@ -17,6 +17,7 @@ Plugin 'puppetlabs/puppet-syntax-vim'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'gabrielelana/vim-markdown'
 Plugin 'lanox/lanox-vim-theme'
+Plugin 'danro/rename.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
