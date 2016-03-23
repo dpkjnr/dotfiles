@@ -124,5 +124,8 @@ nnoremap <leader>h :noh<cr>
 " Toggle paste
 nnoremap <leader>tp :set invpaste paste?<cr>
 
+" Reload vimrc
+nnoremap <leader>r :source ~/.vimrc<cr>
+
 " Cabbrev for :tabnew
 ca tn tabnew
