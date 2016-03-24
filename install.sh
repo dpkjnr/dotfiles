@@ -32,6 +32,15 @@ do
       ;;
     --dnd) DND=true # Do not replace the existing bashrc
       ;;
+    --all) # Apply all the options
+      LOGIN=true
+      UPDATE=true
+      MANAGER=true
+      VUNDLE=true
+      GITCONFIG=true
+      GITIGNORE=true
+      CMDLINETOOLS=true
+      ;;
   esac
   shift
 done
