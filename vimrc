@@ -134,5 +134,8 @@ nnoremap <leader>m= :tabmove +1<cr>
 " Move tab 1 position to left
 nnoremap <leader>m- :tabmove -1<cr>
 
+" Show trailing whitespace
+nnoremap <leader>ws /\s\+$<cr>
+
 " Cabbrev for :tabnew
 ca tn tabnew
