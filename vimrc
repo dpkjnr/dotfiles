@@ -91,6 +91,9 @@ let g:NERDTreeShowHidden=1
 " Toggling list style in Explore
 let g:netrw_liststyle=3
 
+" Disable markdown spell check
+let g:markdown_enable_spell_checking = 0
+
 " Highlight text with red background when > 80 characters in a line
 " highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 " match OverLength /\%81v.\+/
