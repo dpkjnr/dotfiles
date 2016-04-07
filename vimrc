@@ -141,5 +141,8 @@ nnoremap <leader>m- :tabmove -1<cr>
 " Show trailing whitespace
 nnoremap <leader>ws /\s\+$<cr>
 
+" Quit all
+nnoremap <leader>qq :qall<cr>
+
 " Cabbrev for :tabnew
 ca tn tabnew
