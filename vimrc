@@ -18,6 +18,7 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'gabrielelana/vim-markdown'
 Plugin 'lanox/lanox-vim-theme'
 Plugin 'danro/rename.vim'
+Plugin 'evanmiller/nginx-vim-syntax'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
