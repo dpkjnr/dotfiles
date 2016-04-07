@@ -69,7 +69,8 @@ if [[ $platform == 'Darwin' ]]; then
                    tree \
                    wget \
                    multitail \
-                   vagrant-completion
+                   vagrant-completion \
+                   ssh-copy-id
 
       echo "Installing homebrew cask";
       brew tap caskroom/cask
