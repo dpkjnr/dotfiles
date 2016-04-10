@@ -7,6 +7,9 @@ if [[ $platform == 'Darwin' ]]; then
   # Show hidden files
   alias l.='ls -d .* --color=auto'
 
+  # System sleep
+  alias goodnight='pmset sleepnow'
+
   export CLICOLOR=1
   export LSCOLORS=ExFxBxDxCxegedabagacad
 
