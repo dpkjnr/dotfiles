@@ -20,6 +20,13 @@ Plugin 'lanox/lanox-vim-theme'
 Plugin 'danro/rename.vim'
 Plugin 'evanmiller/nginx-vim-syntax'
 Plugin 'tpope/vim-git'
+Plugin 'pangloss/vim-javascript'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'bling/vim-airline'
+Plugin 'mhinz/vim-startify'
+Plugin 'valloric/youcompleteme'
+Plugin 'yggdroot/indentline'
+Plugin 'tpope/vim-rails'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
